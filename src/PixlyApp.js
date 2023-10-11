@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import RoutesList from "./RoutesList";
-import "dotenv";
 import NavBar from "./NavBar";
 
-const BASE_API_URL = process.env.BASE_API_URL;
+const BASE_API_URL = "http://localhost:5001"
 
 function PixlyApp() {
   const [images, setImages] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+
+  async function addImage(formData) {
+    const response = await fetch(`${BASE_API_URL}/files`, {method: 'POST', body: JSON.stringify(formData), headers: {"Content-Type": "application/json"}})
+    const newImage = await response.json();
+    setImages(images => [...images, newImage]);
+  }
 
   useEffect(() => {
     async function setInitialImages() {
@@ -32,7 +38,7 @@ function PixlyApp() {
     <>
       <BrowserRouter>
         <NavBar />
-        <RoutesList />
+        <RoutesList addImage={addImage}/>
       </BrowserRouter>
     </>
   );
