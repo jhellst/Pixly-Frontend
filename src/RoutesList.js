@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Homepage from './Homepage';
 import UploadForm from './UploadForm';
+import ImageDetail from './ImageDetail';
 
 /** Provides routing for app. Will provide access to routes with info on
  *    companies/jobs/profile if user is logged in, otherwise will
@@ -12,7 +13,7 @@ function RoutesList({ images, addImage }) {
     <>
         <Routes>
           <Route path="/" element={<Homepage images={images} />} />
-          {/* <Route path="/images/:id" element={<ImageDetail />} /> */}
+        <Route path="/images/:id" element={<ImageDetail images={images} />} />
           <Route path="/upload" element={<UploadForm addImage={addImage} />} />
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
