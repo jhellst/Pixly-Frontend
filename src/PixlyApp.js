@@ -9,6 +9,8 @@ function PixlyApp() {
   const [images, setImages] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log("STATE Imgaes", images);
+
 
   async function addImage(formData) {
     const response = await fetch(
@@ -45,7 +47,7 @@ function PixlyApp() {
     <>
       <BrowserRouter>
         <NavBar />
-        <RoutesList addImage={addImage}/>
+        <RoutesList images={images} addImage={addImage}/>
       </BrowserRouter>
     </>
   );
