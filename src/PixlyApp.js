@@ -16,7 +16,7 @@ function PixlyApp() {
       {
         method: 'POST',
         body: formData,
-        headers: { "Content-Type": "multipart/form-data" }
+        // headers: { "Content-Type": "multipart/form-data" }
       });
     const newImage = await response.json();
     setImages(images => [...images, newImage]);
