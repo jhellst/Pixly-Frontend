@@ -1,5 +1,6 @@
 // import "./Nav.css";
 import { NavLink } from "react-router-dom";
+import "./stylesheets/NavBar.css"
 
 
 /** Renders navigation bar for website.

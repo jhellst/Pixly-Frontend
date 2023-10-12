@@ -12,17 +12,6 @@ function PixlyApp() {
   console.log("STATE Imgaes", images);
 
 
-  async function addImage(formData) {
-    const response = await fetch(
-      `${BASE_API_URL}/files`,
-      {
-        method: 'POST',
-        body: formData,
-        // headers: { "Content-Type": "multipart/form-data" }
-      });
-    const newImage = await response.json();
-    setImages(images => [...images, newImage]);
-  }
 
   useEffect(() => {
     async function setInitialImages() {
@@ -37,6 +26,17 @@ function PixlyApp() {
     return await response.json();
   }
 
+  async function addImage(formData) {
+    const response = await fetch(
+      `${BASE_API_URL}/files`,
+      {
+        method: 'POST',
+        body: formData,
+        // headers: { "Content-Type": "multipart/form-data" }
+      });
+    const newImage = await response.json();
+    setImages(images => [...images, newImage]);
+  }
 
   //TODO: make a nice loading component/animation?
   if (!images) {
