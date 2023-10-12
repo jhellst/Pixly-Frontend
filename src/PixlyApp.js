@@ -11,21 +11,28 @@ function PixlyApp() {
 
 
   async function addImage(formData) {
-    const response = await fetch(`${BASE_API_URL}/files`, {method: 'POST', body: JSON.stringify(formData), headers: {"Content-Type": "application/json"}})
+    const response = await fetch(
+      `${BASE_API_URL}/files`,
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" }
+      });
     const newImage = await response.json();
     setImages(images => [...images, newImage]);
   }
 
   useEffect(() => {
     async function setInitialImages() {
-      await setImages(getImages);
+      const newImages = await getImages();
+      setImages(newImages);
     }
     setInitialImages();
   }, []);
 
   async function getImages() {
     const response = await fetch(`${BASE_API_URL}/files`);
-    return response.json();
+    return await response.json();
   }
 
 

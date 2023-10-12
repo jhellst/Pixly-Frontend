@@ -32,7 +32,7 @@ function UploadForm({ addImage }) {
       <form className="SignupForm" onSubmit={handleSubmit}>
         <label className="form-label" htmlFor="name">Name:</label>
         <input onChange={(e) => setName(e.target.value)}
-          value={formData.name}
+          value={name}
           placeholder="name"
           name="name" />
         <label className="form-label" htmlFor="file">File:</label>
