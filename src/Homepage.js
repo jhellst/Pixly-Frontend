@@ -1,7 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-// import './Homepage.css';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
-import Measure from "react-measure";
 import ImageCard from "./ImageCard";
 import "./stylesheets/Homepage.css"
 
@@ -20,7 +18,6 @@ function Homepage({ images }) {
             >
                 <Masonry>
           {images && images.map(image => (<ImageCard key={image.id} image={image} />))}
-                  {/* <ImageCard key={images[0].id} image={images[0]}/> */}
                 </Masonry>
             </ResponsiveMasonry>
     </div>
