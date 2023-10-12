@@ -12,8 +12,9 @@ function ImageCard({ image }) {
       <div className="ImageCard-info">
         <h4>{image.name}{!!image.exifData.artist && `, by ${image.exifData.artist}`}</h4>
       </div>
-      <Link to={`/images/${image.id}`}>GO TO DETAILS</Link>
+      <Link to={`/images/${image.id}`}>
         <img onLoad={() => setIsLoaded(true)} alt={image.name} src={image.presignedUrl} />
+      </Link>
     </div>
   );
 }

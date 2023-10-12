@@ -15,14 +15,8 @@
 import { useParams } from "react-router-dom";
 
 function ImageDetail({ images }) {
-
   const { id } = useParams();
-
-  console.log("ID:", id, "IMAGES:", images);
-
   const image = images.find(i => i.id === +id);
-
-  console.log("IMAGE for detail page:", image);
 
   return (
     <div className="ImageDetail">

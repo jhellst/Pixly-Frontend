@@ -23,14 +23,11 @@ function UploadForm({ addImage }) {
     console.log("Form Data", formData, formData.get("name"));
 
     addImage(formData);
+    setName("");
+    setSelectedFile(null);
   }
 
-  // function handleFormChange(evt) {
-  //   const { name, value } = evt.target;
-  //   setFormData(prevFormData => (
-  //     { ...prevFormData, [name]: value }
-  //   ));
-  // }
+
 
   return (
     <>
