@@ -17,6 +17,8 @@ function UploadForm({ addImage }) {
     formData.append("file", selectedFile);
     formData.append("name", name);
 
+    console.log("Form Data", formData, formData.get("name"));
+
     addImage(formData);
   }
 
