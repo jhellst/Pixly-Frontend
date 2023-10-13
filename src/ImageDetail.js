@@ -18,14 +18,15 @@ function ImageDetail({ images, editImage }) {
   const { id } = useParams();
   const image = images.find(i => i.id === +id);
   const [isEdit, setIsEdit] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [editedImage, setEditedImage] = useState(null);
 
   async function submitEdit(operation) {
-    // const editUrl = await editImage(id, operation);
-    setIsEdit(true);
-    // console.log("Got back edit url!", image.editUrl);
-    setEditedImage(async () => await editImage(id, operation));
+    setIsEdit(() => false);
+    await editImage(id, operation);
+    setIsEdit(() => true);
+  }
+
+  function toggleIsEdit() {
+    setIsEdit(!isEdit);
   }
 
   return (
@@ -34,15 +35,17 @@ function ImageDetail({ images, editImage }) {
         <h3>Edit Your Image!</h3>
         <button onClick={() => submitEdit("greyscale")}>Greyscale</button>
         <button onClick={() => submitEdit("flip")}>Flip 180</button>
-        <button onClick={() => submitEdit("sepia")}>Sepia</button>
+        {/* <button onClick={() => submitEdit("sepia")}>Sepia</button> */}
       </div>
-      {editedImage &&
-        <>
           {isEdit
-            ? <img onLoad={() => setIsLoaded(true)} src={image.editUrl} alt={image.name} />
-            : <img onLoad={() => setIsLoaded(true)} src={image.presignedUrl} alt={image.name} />
-          }
-        </>
+        ? <img src={image.editUrl} alt={image.name} />
+        : <img src={image.presignedUrl} alt={image.name} />
+      }
+      {!!image.editUrl &&
+        <div className="ImageDetail-toggle-buttons">
+          <button disabled={!isEdit} onClick={toggleIsEdit}>Original</button>
+          <button disabled={isEdit} onClick={toggleIsEdit}>Edited</button>
+        </div>
       }
       <div className="ImageDetail-info">
         {Object.keys(image.exifData).map((k, i) => (

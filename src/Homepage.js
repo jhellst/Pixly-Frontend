@@ -13,10 +13,11 @@ function Homepage({ images }) {
     <div className="Homepage">
       <h1>Pixly</h1>
       <p>All your images in one, convenient place.</p>
+      {/* {images && images.map(image => (<ImageCard key={image.id} image={image} />))} */}
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
       >
-        <Masonry>
+        <Masonry gutter={5}>
           {images && images.map(image => (<ImageCard key={image.id} image={image} />))}
         </Masonry>
       </ResponsiveMasonry>

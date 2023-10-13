@@ -51,11 +51,10 @@ function PixlyApp() {
     // setImages(images => [...images, image]);
     setImages(images => {
       const image = images.find(i => i.id === +id);
-      image.editUrl = editData.url;
+      image.editUrl = editData.editUrl;
       return images;
     });
 
-    return editData.editUrl;
   }
 
   //TODO: make a nice loading component/animation?
