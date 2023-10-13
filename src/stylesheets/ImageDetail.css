@@ -1,17 +1,29 @@
 .ImageDetail {
   display: flex;
   flex-direction: column;
-  padding: 2% 2% 5% 2%;
-  background-color: aliceblue;
-  border-radius: 20px;
-  margin: 0 auto;
-  width: 50%;
   align-items: center;
+  margin: 10px auto;
+  width: fit-content;
+  padding: 10px;
+
+  background-color: lightgray;
+  border-radius: 20px;
+}
+
+.ImageDetail-edit-buttons button, .ImageDetail-toggle-buttons button {
+  margin: 0 10px;
 }
 
 .ImageDetail img {
-  width: auto;
-  /* flex: 1; */
   /* cursor: pointer; */
   margin: 10px;
+}
+
+.ImageDetail-info {
+  align-self: baseline;
+  margin-left: 10px;
+}
+
+.ImageDetail-info p, .ImageDetail-info h3 {
+  margin: 3px 0;
 }

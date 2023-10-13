@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Alert from "./Alert";
+import "./stylesheets/UploadForm.css";
 
 
 /** Form for signing up a new user */
@@ -30,8 +30,9 @@ function UploadForm({ addImage }) {
 
 
   return (
-    <>
-      <form className="SignupForm" onSubmit={handleSubmit}>
+    <div className="UploadForm">
+      <h3>Add a new image!</h3>
+      <form onSubmit={handleSubmit}>
         <label className="form-label" htmlFor="name">Name:</label>
         <input onChange={(e) => setName(e.target.value)}
           value={name}
@@ -42,9 +43,9 @@ function UploadForm({ addImage }) {
           id="file"
           type="file"
           name="file" />
-          <button>Upload</button>
+        <button>Upload</button>
       </form>
-    </>
+    </div>
   );
 }
 

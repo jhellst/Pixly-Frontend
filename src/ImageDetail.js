@@ -32,8 +32,8 @@ function ImageDetail({ images, editImage }) {
 
   return (
     <div className="ImageDetail">
+      <h3>Edit Your Image!</h3>
       <div className="ImageDetail-edit-buttons">
-        <h3>Edit Your Image!</h3>
         <button onClick={() => submitEdit("greyscale")}>Greyscale</button>
         <button onClick={() => submitEdit("flip")}>Flip 180</button>
         {/* <button onClick={() => submitEdit("sepia")}>Sepia</button> */}
@@ -51,6 +51,7 @@ function ImageDetail({ images, editImage }) {
         </div>
       }
       <div className="ImageDetail-info">
+        <h3>Image Details:</h3>
         {Object.keys(image.exifData).map((k, i) => (
           image.exifData[k]
             ? <p key={i}><b>{k}:</b> {image.exifData[k]}</p>

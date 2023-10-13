@@ -1,0 +1,23 @@
+.UploadForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 10px auto;
+}
+.UploadForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.UploadForm input, .UploadForm label {
+  margin-bottom: 5px;
+}
+
+.UploadForm button {
+  margin-top: 5px;
+}
