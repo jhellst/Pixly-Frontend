@@ -38,15 +38,22 @@ function PixlyApp() {
   }
 
   async function editImage(id, editOperation) {
-    console.log("Attempting to edit with operation:", editOperation);
+
     const response = await fetch(
       `${BASE_API_URL}/files/${id}`,
       {
         method: 'PATCH',
-        body: { operation: editOperation },
+        body: JSON.stringify({ operation: editOperation }),
         headers: { "Content-Type": "application/json" }
       });
     const editData = await response.json();
+
+    // setImages(images => [...images, image]);
+    setImages(images => {
+      const image = images.find(i => i.id === +id);
+      image.editUrl = editData.url;
+      return images;
+    });
 
     return editData.editUrl;
   }

@@ -18,12 +18,14 @@ function ImageDetail({ images, editImage }) {
   const { id } = useParams();
   const image = images.find(i => i.id === +id);
   const [isEdit, setIsEdit] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [editedImage, setEditedImage] = useState(null);
 
   async function submitEdit(operation) {
-    const editUrl = await editImage(id, operation);
+    // const editUrl = await editImage(id, operation);
     setIsEdit(true);
-    image.editUrl = editUrl;
-    console.log("Got back edit url!", image.editUrl);
+    // console.log("Got back edit url!", image.editUrl);
+    setEditedImage(async () => await editImage(id, operation));
   }
 
   return (
@@ -34,9 +36,13 @@ function ImageDetail({ images, editImage }) {
         <button onClick={() => submitEdit("flip")}>Flip 180</button>
         <button onClick={() => submitEdit("sepia")}>Sepia</button>
       </div>
-      {isEdit
-        ? <img src={image.editUrl} alt={image.name} />
-        : <img src={image.presignedUrl} alt={image.name} />
+      {editedImage &&
+        <>
+          {isEdit
+            ? <img onLoad={() => setIsLoaded(true)} src={image.editUrl} alt={image.name} />
+            : <img onLoad={() => setIsLoaded(true)} src={image.presignedUrl} alt={image.name} />
+          }
+        </>
       }
       <div className="ImageDetail-info">
         {Object.keys(image.exifData).map((k, i) => (
