@@ -37,12 +37,14 @@ function UploadForm({ addImage }) {
         <input onChange={(e) => setName(e.target.value)}
           value={name}
           placeholder="name"
-          name="name" />
+          name="name"
+          required />
         <label className="form-label" htmlFor="file">File:</label>
         <input onChange={(e) => setSelectedFile(e.target.files[0])}
           id="file"
           type="file"
-          name="file" />
+          name="file"
+          required />
         <button>Upload</button>
       </form>
     </div>
