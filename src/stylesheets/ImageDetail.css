@@ -17,6 +17,7 @@
 .ImageDetail img {
   /* cursor: pointer; */
   margin: 10px;
+  max-width: 70vw;
 }
 
 .ImageDetail-info {
