@@ -11,16 +11,33 @@
 
 // Consider adding another column in db that starts null, then upon image edit will be updated in db with the presigned url
 //    - Make the Homepage show edited image, if that column exists in the db (otherwise just show original)
-
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-function ImageDetail({ images }) {
+function ImageDetail({ images, editImage }) {
   const { id } = useParams();
   const image = images.find(i => i.id === +id);
+  const [isEdit, setIsEdit] = useState(false);
+
+  async function submitEdit(operation) {
+    const editUrl = await editImage(id, operation);
+    setIsEdit(true);
+    image.editUrl = editUrl;
+    console.log("Got back edit url!", image.editUrl);
+  }
 
   return (
     <div className="ImageDetail">
-      <img src={image.presignedUrl} alt={image.name} />
+      <div className="ImageDetail-edit-buttons">
+        <h3>Edit Your Image!</h3>
+        <button onClick={() => submitEdit("greyscale")}>Greyscale</button>
+        <button onClick={() => submitEdit("flip")}>Flip 180</button>
+        <button onClick={() => submitEdit("sepia")}>Sepia</button>
+      </div>
+      {isEdit
+        ? <img src={image.editUrl} alt={image.name} />
+        : <img src={image.presignedUrl} alt={image.name} />
+      }
       <div className="ImageDetail-info">
         {Object.keys(image.exifData).map((k, i) => (
           image.exifData[k]

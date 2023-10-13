@@ -7,13 +7,15 @@ import ImageDetail from './ImageDetail';
  *    companies/jobs/profile if user is logged in, otherwise will
  *    show only login and signup buttons, and will not allow other routing.
  */
-function RoutesList({ images, addImage }) {
+function RoutesList({ images, addImage, editImage }) {
 // TODO: Include additional callbacks in props as needed.
   return (
     <>
         <Routes>
           <Route path="/" element={<Homepage images={images} />} />
-        <Route path="/images/:id" element={<ImageDetail images={images} />} />
+        <Route path="/images/:id" element={<ImageDetail
+          images={images}
+          editImage={editImage} />} />
           <Route path="/upload" element={<UploadForm addImage={addImage} />} />
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>

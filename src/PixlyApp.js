@@ -7,7 +7,6 @@ const BASE_API_URL = "http://localhost:5001"
 
 function PixlyApp() {
   const [images, setImages] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   console.log("STATE Imgaes", images);
 
@@ -38,6 +37,20 @@ function PixlyApp() {
     setImages(images => [...images, newImage]);
   }
 
+  async function editImage(id, editOperation) {
+    console.log("Attempting to edit with operation:", editOperation);
+    const response = await fetch(
+      `${BASE_API_URL}/files/${id}`,
+      {
+        method: 'PATCH',
+        body: { operation: editOperation },
+        headers: { "Content-Type": "application/json" }
+      });
+    const editData = await response.json();
+
+    return editData.editUrl;
+  }
+
   //TODO: make a nice loading component/animation?
   if (!images) {
     return <h1>Loading...</h1>;
@@ -47,7 +60,7 @@ function PixlyApp() {
     <>
       <BrowserRouter>
         <NavBar />
-        <RoutesList images={images} addImage={addImage}/>
+        <RoutesList images={images} addImage={addImage} editImage={editImage} />
       </BrowserRouter>
     </>
   );
