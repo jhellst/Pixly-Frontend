@@ -7,8 +7,6 @@ import "./stylesheets/Homepage.css";
 /** Homepage which displays welcome message or login/sign up buttons */
 function Homepage({ images }) {
 
-  console.log("Homepage images prop", images);
-
   return (
     <div className="Homepage">
       <h1>Pixly</h1>

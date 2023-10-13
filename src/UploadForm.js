@@ -14,13 +14,9 @@ function UploadForm({ addImage }) {
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    console.log("Submitted file:", selectedFile);
-
     const formData = new FormData();
     formData.append("file", selectedFile);
     formData.append("name", name);
-
-    console.log("Form Data", formData, formData.get("name"));
 
     addImage(formData);
     setName("");

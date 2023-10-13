@@ -8,10 +8,6 @@ const BASE_API_URL = "http://localhost:5001"
 function PixlyApp() {
   const [images, setImages] = useState(null);
 
-  console.log("STATE Imgaes", images);
-
-
-
   useEffect(() => {
     async function setInitialImages() {
       const newImages = await getImages();
