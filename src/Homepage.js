@@ -17,7 +17,7 @@ function Homepage({ images }) {
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
       >
-        <Masonry gutter={5}>
+        <Masonry gutter={"15px"}>
           {images && images.map(image => (<ImageCard key={image.id} image={image} />))}
         </Masonry>
       </ResponsiveMasonry>

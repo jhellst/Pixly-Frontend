@@ -1,15 +1,21 @@
 .ImageCard {
   display: flex;
+  flex-direction: column;
+  padding: 2% 2% 5% 2%;
+  background-color: lightgrey;
+  border-radius: 20px;
+  margin-bottom: 1%;
 }
 
 
 .ImageCard img {
   flex: 1;
-  max-width: 400px;
-  min-width: 200px;
+  max-width: 90%;
+  min-width: 75%;
   cursor: pointer;
 }
 
-.ImageCard img:hover {
+.ImageCard:hover {
+  background-color: bisque;
   outline: 2px solid salmon;
 }

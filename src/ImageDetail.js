@@ -13,6 +13,7 @@
 //    - Make the Homepage show edited image, if that column exists in the db (otherwise just show original)
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import "./stylesheets/ImageDetail.css";
 
 function ImageDetail({ images, editImage }) {
   const { id } = useParams();
@@ -37,10 +38,12 @@ function ImageDetail({ images, editImage }) {
         <button onClick={() => submitEdit("flip")}>Flip 180</button>
         {/* <button onClick={() => submitEdit("sepia")}>Sepia</button> */}
       </div>
+      <div className="ImageDetail-image-container">
           {isEdit
         ? <img src={image.editUrl} alt={image.name} />
         : <img src={image.presignedUrl} alt={image.name} />
       }
+      </div>
       {!!image.editUrl &&
         <div className="ImageDetail-toggle-buttons">
           <button disabled={!isEdit} onClick={toggleIsEdit}>Original</button>

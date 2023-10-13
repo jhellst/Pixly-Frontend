@@ -1,0 +1,17 @@
+.ImageDetail {
+  display: flex;
+  flex-direction: column;
+  padding: 2% 2% 5% 2%;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 50%;
+  align-items: center;
+}
+
+.ImageDetail img {
+  width: auto;
+  /* flex: 1; */
+  /* cursor: pointer; */
+  margin: 10px;
+}
