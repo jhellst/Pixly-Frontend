@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import RoutesList from "./RoutesList";
 import NavBar from "./NavBar";
 
-const BASE_API_URL = "http://localhost:5001"
+const BASE_API_URL = "https://pixly-backend-render.onrender.com/"
 
 function PixlyApp() {
   const [images, setImages] = useState(null);
