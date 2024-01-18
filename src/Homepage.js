@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+// import { NavLink, Link } from "react-router-dom";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ImageCard from "./ImageCard";
 import "./stylesheets/Homepage.css";
